@@ -1,18 +1,20 @@
-import React from 'react'
-import Link from 'next/link'
-const header = () => {
-  return (
-    <div className='header'>
-     <div>
-        <h2>Todo App</h2>
-     </div>
-     <article>
-        <Link href={"/"}>Home</Link>
-        <Link href={"/about"}>About</Link>
-        <Link href={"/login"}>Login</Link>
-     </article>
-    </div>
-  )
-}
+import Link from "next/link";
+import React from "react";
+import { LogoutBtn } from "../Components/client";
 
-export default header
+const Header = () => {
+  return (
+    <div className="header">
+      <div>
+        <h2>Todo.</h2>
+      </div>
+      <article>
+        <Link href={"/"}>Home</Link>
+        <Link href={"/profile"}>Profile</Link>
+        <LogoutBtn />
+      </article>
+    </div>
+  );
+};
+
+export default Header;

@@ -1,8 +1,7 @@
-
-import "../styles/app.scss"; 
-import header from "./header";
-
-
+import React from 'react';
+import Link from 'next/link';
+import header from './header';  // Import the header component
+import { ContextProvider } from '@/Components/client';
 export const metadata = {
   title: "Nexjs-Project",
   description: "Todo App Project to learn Next js Concepts",
@@ -11,10 +10,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-    
-      <body >
-      <header></header>
-        {children}</body>
+      <body>
+        <ContextProvider>
+
+          <header />
+        {children}
+        </ContextProvider>
+          
+      </body>
     </html>
   );
 }
