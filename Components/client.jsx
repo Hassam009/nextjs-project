@@ -1,26 +1,33 @@
 "use client";
 
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 
-export const Context=createContext({user:{}})
+export const Context = createContext({ user: {} });
 
-export const ContextProvider=({children})=>{
-    const [user, setUser]=useState({});
-    return
-    <Context.Provider value={{
-        user,
-        setUser,
-    }}>
-        {children}
-    </Context.Provider>
-}
+export const ContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+  return;
+  <Context.Provider
+    value={{
+      user,
+      setUser,
+    }}
+  >
+    {children}
+  </Context.Provider>;
+};
 
-export const LogoutBtn=()=>{
+export const LogoutBtn = () => {
+  const logoutHandler = () => {
+    alert("Logged Out");
+  };
 
-    const logoutHandler=()=>{
-        alert("Logged Out")
-    }
-    return <button className="btn" onClick={logoutHandler}>
-        Logout Button
-        </button>
-}
+  const { user } = useContext(Context);
+  return user.id ? (
+    <button className="btn" onClick={logoutHandler}>
+      Logout Button
+    </button>
+  ) : (
+    <Link href={"/login"}>Login</Link>
+  );
+};
